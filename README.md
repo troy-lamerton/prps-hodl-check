@@ -8,8 +8,14 @@ Every hodl is stored in a private mapping of [creator & id] to hodl object.
 You MUST have the __hodl id__ and __address__ of the person who hodled the Purpose,
 to get the hodl objects.
 
-It is possible to 'brute force' a persons hodl ids, but it takes some time.
 
-# TODO
+# New approach:
 
-make a node script that can brute force unknown hodl ids. simply by iterating from 1 to 1 million, etc.
+It is much better to go through the history of all hodlFor transactions,
+and check them for **users address**, --> store the hodl id.
+
+Simple as this:
+1. Get history of hodlFor transactions
+1. Iterate over history
+1. If beneficiary is me, store the hodl ID
+1. hodl ID's found :)
