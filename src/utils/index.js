@@ -1,12 +1,12 @@
-export const functionNameToHex = functionName => {
-  switch (functionName) {
-    case 'balanceOf()':
-      return '0x70a08231000000000000000000000000';
-    default:
-      throw new Error(
-        `the functionNameToHex ${
-          functionName
-        } does not have an associated hex value. Please define it in the utils file.`,
-      );
-  }
-};
+export function getContractInstance(contractJsonURL) {
+  return fetch(contractJsonURL)
+    .then(raw => raw.json())
+    .then(data => {
+      const abi = data.abi;
+      const address = data.networks[1].address // contract address on mainnet
+
+      return new window.w3.eth.Contract(abi, address, {
+        from: window.coinbase,
+      });
+    });
+}

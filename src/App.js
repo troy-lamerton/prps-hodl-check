@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Dubi from './components/Dubi';
+import Dubi from './components/Dubi/index';
+import Hodl from './components/Hodl/index';
 
 import './App.css';
 
@@ -24,6 +25,7 @@ class App extends Component {
         <p className="App-intro">ETH balance: {this.state.balance}</p>
 
         <Dubi />
+        <Hodl />
       </div>
     );
   }
